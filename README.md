@@ -32,7 +32,7 @@ ext {
 
     // App dependencies
     
-    supportLibraryVersion = '23.3.0'
+    supportLibraryVersion = '23.4.0'
 
     buildToolsVersion = "${BUILD_TOOLS_VERSION}"
     compileSdkVersion = COMPILE_SDK_VERSION.toInteger()
