@@ -5,7 +5,7 @@ public class DemoHelper {
     private static final String TAG = "DemoHelper";
 
     public static String getDemoName() {
-        return TAG;
+        return "This is from " + TAG;
     }
 
 }

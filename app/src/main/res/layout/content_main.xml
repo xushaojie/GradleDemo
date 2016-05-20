@@ -22,8 +22,16 @@
         android:id="@+id/main_text_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="AA"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_margin="8dp"
+        tools:text="AA" />
+
+    <Button
+        android:id="@+id/main_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="CLICK ME" />
 
 </LinearLayout>
