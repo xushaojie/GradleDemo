@@ -3,11 +3,11 @@ apply plugin: 'com.android.application'
 // 编译时间
 def buildTime = new Date().format("yyyy-MM-dd HH:mm", TimeZone.getTimeZone("GMT+8:00"))
 // 版本号，每次升级+1
-def versionCodeNum = 3
+def versionCodeNum = 4
 // 版本名
 def versionMajor = 0
 def versionMinor = 0
-def versionPatch = 2
+def versionPatch = 3
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
