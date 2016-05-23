@@ -20,6 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- 应用市场渠道标志 -->
+        <meta-data
+            android:name="MARKET_CHANNEL"
+            android:value="${market_channel}"/>
+
     </application>
 
 </manifest>

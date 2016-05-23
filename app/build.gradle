@@ -3,11 +3,11 @@ apply plugin: 'com.android.application'
 // 编译时间
 def buildTime = new Date().format("yyyy-MM-dd HH:mm", TimeZone.getTimeZone("GMT+8:00"))
 // 版本号，每次升级+1
-def versionCodeNum = 2
+def versionCodeNum = 4
 // 版本名
 def versionMajor = 0
 def versionMinor = 0
-def versionPatch = 1
+def versionPatch = 3
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -28,6 +28,37 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    productFlavors {
+        flavors()
+
+        localDebug {
+            applicationId "com.example.xushao.gradledemo.local"
+            versionCode 99
+            versionName 'localDebug'
+        }
+    }
+
+    productFlavors.all {
+        flavor ->
+            flavor.manifestPlaceholders = [market_channel: name];
+            if (flavor.name.equals("localDebug")) {
+                flavor.manifestPlaceholders = [market_channel: "localDebugChannel"]
+            }
+    }
+}
+
+def flavors() {
+    def path = './channels.txt' // 渠道名
+    file(path).eachLine {
+        line ->
+            if (!line.startsWith("//")) {
+                // 动态创建productFlavor
+                android.productFlavors.create(line, {
+                    manifestPlaceholders = [market_channel: name]
+                })
+            }
     }
 }
 

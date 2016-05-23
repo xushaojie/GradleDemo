@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.xushao.gradledemo.utils.Util;
 import com.xushao.test.library.DemoHelper;
 
 public class MainActivity extends AppCompatActivity {
@@ -50,12 +51,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showAppInfoDialog(String debug) {
+        String channel = Util.getMarketChannel(MyApp.getInstance());
         String buildTime = BuildConfig.BUILD_TIME;
         int versionCode = BuildConfig.VERSION_CODE;
         String versionName = BuildConfig.VERSION_NAME;
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("DEBUG: " + debug);
-        builder.setMessage("CODE: " + versionCode + "\n"
+        builder.setMessage("CHANNEL:" + channel + "\n"
+                + "CODE: " + versionCode + "\n"
                 + "NAME: " + versionName + "\n"
                 + "TIME: " + buildTime);
         builder.setPositiveButton("OK", null);
