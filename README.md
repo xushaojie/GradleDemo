@@ -40,6 +40,6 @@ ext {
     targetSdkVersion = TARGET_SDK_VERSION;
 }
 
-更新说明
-0.0.3
+# 更新说明
+# 0.0.3
     新增多渠道打包
