@@ -29,6 +29,37 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        flavors()
+
+        localDebug {
+            applicationId "com.example.xushao.gradledemo.local"
+            versionCode 99
+            versionName 'localDebug'
+        }
+    }
+
+    productFlavors.all {
+        flavor ->
+            flavor.manifestPlaceholders = [market_channel: name];
+            if (flavor.name.equals("localDebug")) {
+                flavor.manifestPlaceholders = [market_channel: "localDebugChannel"]
+            }
+    }
+}
+
+def flavors() {
+    def path = './channels.txt' // 渠道名
+    file(path).eachLine {
+        line ->
+            if (!line.startsWith("//")) {
+                // 动态创建productFlavor
+                android.productFlavors.create(line, {
+                    manifestPlaceholders = [market_channel: name]
+                })
+            }
+    }
 }
 
 dependencies {
